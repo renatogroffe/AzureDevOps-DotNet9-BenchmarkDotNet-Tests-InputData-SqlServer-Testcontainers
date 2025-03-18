@@ -20,21 +20,16 @@ stages:
       vmImage: $(vmImageName)
     steps:
     - script: |
-        cd /usr/bin
-        ls
-      displayName: Exibir arquivos do diretorio /usr/bin (utilitarios instalados)
-    - script: |
-        docker images
-        echo ''
-        docker container ls
-      displayName: Exibir imagens e container em execução
-    - script: |
         cd $(Path_Tests)
         ls
         dotnet run --filter BenchmarkingDapperEFCoreCRMSqlServer.Tests.* -c Release
       displayName: Executar benchmarking com testes de performance - Entity Framework Core x Dapper x ADO x Dapper.Contrib
       env:
         NumeroContatosPorCompanhia: $(NoContatosPorCompanhia)
+    - script: |
+        sleep 20s
+        docker ps -a
+      displayName: Exibir containers apos 20 segundos
     - script: |
         cd $(Build.SourcesDirectory)/$(Path_ArtifactsBenchmarking)
         pwd
@@ -49,7 +44,3 @@ stages:
         contentPath: '$(Build.SourcesDirectory)/$(Path_ArtifactsBenchmarking)'
         indexFile: '$(ArtifactBenchmarkingMarkdown)'
       displayName: Publicar resultado no formato Markdown
-    - script: |
-        docker images
-        docker container ls
-      displayName: Exibir imagens e containers no ambiente
