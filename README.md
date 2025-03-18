@@ -3,4 +3,4 @@ Pipeline do Azure DevOps demonstrando o uso de Testcontainers em uma aplicação
 
 Aplicação utilizada como base para a implementação deste pipeline:
 
-**https://github.com/renatogroffe/DotNet9-BenchmarkDotNet-Tests-InputData-SqlServer-Testcontainers**
+**https://github.com/renatogroffe/DotNet9-BenchmarkDotNet-Tests-InputData-SqlServer-Testcontainers_v2**
